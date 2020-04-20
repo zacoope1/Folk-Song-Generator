@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+        <script src="script.js"></script>
+
+    </head>
+
+    <body>
+
+        <noscript>You must have javascript enabled to use this site! :)</noscript>
+        <div id="Header">
+            <h1>Folk Song Generator</h1>
+            <h3>By: Zachary A. Cooper</h3>
+        </div>
+
+
+        <div id="Song_Setup">
+            <h2 style="padding-bottom: 10px;">Song Setup</h2>
+            <form id="songSetupForm">
+                <div id="Song_Speed">
+                    <label>Song Speed:</label>
+                    <select id="songSpeedSelect">
+                        <option value="0">Slow (.5 Second Break)</option>
+                        <option value="1">Normal (.25 Second Break)</option>
+                        <option value="2">Fast (.10 Second break)</option>
+                    </select>
+                </div>
+                <div id="Song_Length">
+                    <label>Song Length: </label>
+                    <select id="songLengthSelect">
+                        <option value="0">Short (50 Notes)</option>
+                        <option value="1">Normal (100 Notes)</option>
+                        <option value="2">Long (200 Notes)</option>
+                    </select>
+                </div>
+                <div id="Debug_Mode">
+                    <label>Debug Mode:</label>
+                    <select id="debugModeSelect">
+                        <option value="ON">ON</option>
+                        <option value="OFF">OFF</option>
+                    </select>
+                </div>
+                <button type="button" onclick="main();">Generate Song!</button>
+            </form>
+        </div>
+
+        <div id="DFA_View">
+            <h3>DFA View</h3>
+            <img id="DFA_Image" src="/src/img/DFA_.png">
+        </div>
+
+        <div id="Chord_View">
+            <h3>Chord Tab</h3>
+            <img id="Chord_Image" src="">
+        </div>
+
+    </body>
+
+</html>
