@@ -74,167 +74,316 @@ function setSleepTime(){
 function parseDFA(input){
 
     switch(currentState) {
-        case 0:
-            switch(input){
+        case 0: // S
+            switch(input) {
                 case 0:
+                    currentState = 2;
                     break;
                 case 1:
+                    currentState = 2;
+                    break;
+                case 2:
+                    currentState = 3;
                     break;
                 case 3:
+                    currentState = 3;
                     break;
                 case 4:
+                    currentState = 4;
                     break;
                 case 5:
+                    currentState = 9;
                     break;
                 case 6:
+                    currentState = 9;
                     break;
                 case 7:
+                    currentState = 7;
                     break;
-                case 9:
+                case 8:
+                    currentState = 6;
                     break;
             }
             break;
-        case 1:
-            switch(input){
+        case 1: // A
+            switch(input) {
                 case 0:
+                    currentState = 1;
                     break;
                 case 1:
+                    currentState = 6;
+                    break;
+                case 2:
+                    currentState = 5;
                     break;
                 case 3:
+                    currentState = 4;
                     break;
                 case 4:
+                    currentState = 3;
                     break;
                 case 5:
+                    currentState = 2;
                     break;
                 case 6:
+                    currentState = 7;
                     break;
                 case 7:
+                    currentState = 9;
                     break;
-                case 9:
+                case 8:
+                    currentState = 8;
                     break;
             }
             break;
-        case 3:
-            switch(input){
+        case 2: // AM
+            switch(input) {
                 case 0:
+                    currentState = 2;
                     break;
                 case 1:
+                    currentState = 1;
+                    break;
+                case 2:
+                    currentState = 4;
                     break;
                 case 3:
+                    currentState = 5;
                     break;
                 case 4:
+                    currentState = 3;
                     break;
                 case 5:
+                    currentState = 9;
                     break;
                 case 6:
+                    currentState = 8;
                     break;
                 case 7:
+                    currentState = 7;
                     break;
-                case 9:
+                case 8:
+                    currentState = 6;
                     break;
             }
             break;
-        case 4:
-            switch(input){
+        case 3: // C
+            switch(input) {
                 case 0:
+                    currentState = 3;
                     break;
                 case 1:
+                    currentState = 1;
+                    break;
+                case 2:
+                    currentState = 5;
                     break;
                 case 3:
+                    currentState = 9;
                     break;
                 case 4:
+                    currentState = 4;
                     break;
                 case 5:
+                    currentState = 9;
                     break;
                 case 6:
+                    currentState = 8;
                     break;
                 case 7:
+                    currentState = 7;
                     break;
-                case 9:
+                case 8:
+                    currentState = 6;
                     break;
             }
             break;
-        case 5:
-            switch(input){
+        case 4: // D
+            switch(input) {
                 case 0:
+                    currentState = 4;
                     break;
                 case 1:
+                    currentState = 1;
+                    break;
+                case 2:
+                    currentState = 1;
                     break;
                 case 3:
+                    currentState = 5;
                     break;
                 case 4:
+                    currentState = 5;
                     break;
                 case 5:
+                    currentState = 9;
                     break;
                 case 6:
+                    currentState = 9;
                     break;
                 case 7:
+                    currentState = 8;
                     break;
-                case 9:
+                case 8:
+                    currentState = 8;
                     break;
             }
             break;
-        case 6:
-            switch(input){
+        case 5: // DM
+            switch(input) {
                 case 0:
+                    currentState = 5;
                     break;
                 case 1:
+                    currentState = 2;
+                    break;
+                case 2:
+                    currentState = 2;
                     break;
                 case 3:
+                    currentState = 4;
                     break;
                 case 4:
+                    currentState = 4;
                     break;
                 case 5:
+                    currentState = 9;
                     break;
                 case 6:
+                    currentState = 9;
                     break;
                 case 7:
+                    currentState = 8;
                     break;
-                case 9:
+                case 8:
+                    currentState = 8;
                     break;
             }
             break;
-        case 7:
-            switch(input){
+        case 6: // E
+            switch(input) {
                 case 0:
+                    currentState = 6;
                     break;
                 case 1:
+                    currentState = 2;
+                    break;
+                case 2:
+                    currentState = 2;
                     break;
                 case 3:
+                    currentState = 3;
                     break;
                 case 4:
+                    currentState = 3;
                     break;
                 case 5:
+                    currentState = 9;
                     break;
                 case 6:
+                    currentState = 9;
                     break;
                 case 7:
+                    currentState = 8;
                     break;
-                case 9:
+                case 8:
+                    currentState = 4;
                     break;
             }
             break;
-        case 9:
-            switch(input){
+        case 7: // EM
+            switch(input) {
                 case 0:
+                    currentState = 7;
                     break;
                 case 1:
+                    currentState = 2;
+                    break;
+                case 2:
+                    currentState = 3;
                     break;
                 case 3:
+                    currentState = 4;
                     break;
                 case 4:
+                    currentState = 8;
                     break;
                 case 5:
+                    currentState = 5;
                     break;
                 case 6:
+                    currentState = 9;
                     break;
                 case 7:
+                    currentState = 6;
                     break;
-                case 9:
+                case 8:
+                    currentState = 1;
                     break;
             }
             break;
-
+        case 8: // F
+            switch(input) {
+                case 0:
+                    currentState = 8;
+                    break;
+                case 1:
+                    currentState = 9;
+                    break;
+                case 2:
+                    currentState = 4;
+                    break;
+                case 3:
+                    currentState = 3;
+                    break;
+                case 4:
+                    currentState = 3;
+                    break;
+                case 5:
+                    currentState = 1;
+                    break;
+                case 6:
+                    currentState = 2;
+                    break;
+                case 7:
+                    currentState = 6;
+                    break;
+                case 8:
+                    currentState = 7;
+                    break;
+            }
+            break;
+        case 9: // G
+            switch(input) {
+                case 0:
+                    currentState = 9;
+                    break;
+                case 1:
+                    currentState = 4;
+                    break;
+                case 2:
+                    currentState = 5;
+                    break;
+                case 3:
+                    currentState = 6;
+                    break;
+                case 4:
+                    currentState = 7;
+                    break;
+                case 5:
+                    currentState = 8;
+                    break;
+                case 6:
+                    currentState = 1;
+                    break;
+                case 7:
+                    currentState = 2;
+                    break;
+                case 8:
+                    currentState = 3;
+                    break;
+            }
+            break;
     }
 
 }
