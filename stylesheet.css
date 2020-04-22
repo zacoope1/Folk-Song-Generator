@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0px;
 }
 
 body {
@@ -21,4 +21,16 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   background: green;
+  text-align: center;
+}
+
+#DFA_Image {
+  width: 50%;
+  height: 50%;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+#Content_View {
+  text-align: center;
 }

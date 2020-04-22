@@ -31,9 +31,9 @@
                 <div id="Song_Length">
                     <label>Song Length: </label>
                     <select id="songLengthSelect">
-                        <option value="0">Short (50 Notes)</option>
-                        <option value="1">Normal (100 Notes)</option>
-                        <option value="2">Long (200 Notes)</option>
+                        <option value="0">Short (20 Notes)</option>
+                        <option value="1">Normal (35 Notes)</option>
+                        <option value="2">Long (50 Notes)</option>
                     </select>
                 </div>
                 <div id="Debug_Mode">
@@ -47,14 +47,25 @@
             </form>
         </div>
 
-        <div id="DFA_View">
-            <h3>DFA View</h3>
-            <img id="DFA_Image" src="/src/img/DFA_.png">
-        </div>
 
-        <div id="Chord_View">
-            <h3>Chord Tab</h3>
-            <img id="Chord_Image" src="">
+        <div id="Content_View">
+            <div id="DFA_View">
+                <h3>DFA View</h3>
+                <img id="DFA_Image" src="/src/img/DFA_.png">
+            </div>
+    
+            <div id="Input_Output_View">
+                <h3>Input String</h3>
+                <p id="input"></p>
+                <h3>Song</h3>
+                <p id="language"></p>
+            </div>
+    
+    
+            <!-- <div id="Chord_View">
+                <h3>Chord Tab</h3>
+                <img id="Chord_Image" src="">
+            </div> -->
         </div>
 
     </body>

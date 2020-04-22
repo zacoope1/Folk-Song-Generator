@@ -37,6 +37,32 @@ function getData(){
 
 }
 
+function inputToString(){
+    var str = "";
+
+    for(var i = 0; i < inputLanguage.length; i++){
+
+        str += inputLanguage[i] + " ";
+
+    }
+
+    return str;
+
+}
+
+function languageToString(){
+    var str = "";
+
+    for(var i = 0; i < songLanguage.length; i++){
+
+        str += songLanguage[i] + " ";
+
+    }
+
+    return str;
+
+}
+
 //Generates the input language based off the user provided song length
 function generateNums(x){
 
@@ -386,26 +412,56 @@ function parseDFA(input){
             break;
     }
 
+    switch(currentState){
+        case 1:
+            songLanguage.push("A");
+            break;
+        case 2:
+            songLanguage.push("AM");
+            break;
+        case 3:
+            songLanguage.push("C");
+            break;
+        case 4:
+            songLanguage.push("D");
+            break;
+        case 5:
+            songLanguage.push("DM");
+            break;
+        case 6:
+            songLanguage.push("E");
+            break;
+        case 7:
+            songLanguage.push("EM");
+            break;
+        case 8:
+            songLanguage.push("F");
+            break
+        case 8:
+            songLanguage.push("G");
+            break;
+    }
+
 }
 
 function generateLanguage(){
 
     switch(songLength){
         case "0":
-            generateNums(50);
-            for(var i = 0; i < 50; i++){
+            generateNums(20);
+            for(var i = 0; i < 20; i++){
                 parseDFA(inputLanguage[i]);
             }
             break;
         case "1":
-            generateNums(100);
-            for(var i = 0; i < 100; i++){
+            generateNums(35);
+            for(var i = 0; i < 35; i++){
                 parseDFA(inputLanguage[i]);
             }
             break;
         case "2":
-            generateNums(200);
-            for(var i = 0; i < 200; i++){
+            generateNums(50);
+            for(var i = 0; i < 50; i++){
                 parseDFA(inputLanguage[i]);
             }
             break;
@@ -440,20 +496,27 @@ async function playSound(chord){
 
 async function main(){
 
+    document.getElementById("language").innerHTML = "";
+    document.getElementById("input").innerHTML = "";
+
     getData();
 
     generateLanguage();
 
     setSleepTime();
- 
-    songLanguage = ["C","G","AM","C","G","C","EM","AM","F","C","G"]; //DEBUG
+
+    document.getElementById("language").innerHTML = languageToString();
+
+    document.getElementById("input").innerHTML = inputToString();
+
+    document.getElementById("DFA_View").scrollIntoView();
 
     //PLAY SONG
     for(var i = 0; i < songLanguage.length; i++){
 
         playSound(songLanguage[i]);
         setDFAImage(songLanguage[i]);
-        setChordImage(songLanguage[i]);
+        //setChordImage(songLanguage[i]);
         await sleep(sleepTime);
         console.log(i);
 
