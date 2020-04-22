@@ -7,6 +7,10 @@ body {
   font-family: sans-serif;
 }
 
+h3 {
+  padding: 20px;
+}
+
 #Header {
   display: flex;
   justify-content: space-evenly;
@@ -24,13 +28,57 @@ body {
   text-align: center;
 }
 
+#User_Song_Input {
+  background-color: blue;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#User_Song_Input textarea {
+  width: 500px;
+  height: 75px;
+}
+
+#Pre-Made_Songs {
+  background-color: palegoldenrod;
+  text-align: center;
+}
+
+#Pre-Made_Songs ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#Pre-Made_Songs li {
+  padding-bottom: 30px;
+}
+
+#DFA_View {
+  background-color: tomato;
+}
+
 #DFA_Image {
   width: 50%;
   height: 50%;
   min-width: 50%;
   min-height: 50%;
+  padding-bottom: 20px;
 }
 
 #Content_View {
   text-align: center;
+}
+
+#Input_Output_View {
+  background: orange;
+}
+
+#Input_Output_View p {
+  padding-bottom: 25px;
+}
+
+#Transition_Tab {
+  background: yellow;
 }

@@ -1,4 +1,7 @@
 var debugMode = "OFF"; // <------- DEBUG MODE TOGGLE
+var isRunning = false; // <------- Allows 1 song to run at a time
+var queueCancel = false; // <----- Puts a queue to cancel a running song
+var flipSizeBool = false;
 
 // Algorithm Variables
 var songSpeed = 0;
@@ -24,6 +27,21 @@ function printDebug(){
         var returnStr = "SongSpeed: " + songSpeed + "\nSongLength: " + songLength; 
         console.log(returnStr);
         console.log(inputLanguage);
+    }
+
+}
+
+function flipSize(){
+
+    if(flipSizeBool){
+        document.getElementById("DFA_Image").style.width = "70%";
+        document.getElementById("DFA_Image").style.height = "70%";
+        flipSizeBool = !flipSizeBool;
+    }
+    else {
+        document.getElementById("DFA_Image").style.width = "50%";
+        document.getElementById("DFA_Image").style.height = "50%";
+        flipSizeBool = !flipSizeBool;
     }
 
 }
@@ -437,7 +455,7 @@ function parseDFA(input){
         case 8:
             songLanguage.push("F");
             break
-        case 8:
+        case 9:
             songLanguage.push("G");
             break;
     }
@@ -479,10 +497,10 @@ function setDFAImage(chord){
 
 }
 
-function setChordImage(chord){
+function setDFAImageAccept(chord){
 
-    var string = "/src/img/" + chord + ".png";
-    document.getElementById("Chord_Image").src = string;
+    var string = "/src/img/DFA_" + chord + "_Accept.png";
+    document.getElementById("DFA_Image").src = string;
 
 }
 
@@ -496,14 +514,108 @@ async function playSound(chord){
 
 async function main(){
 
-    document.getElementById("language").innerHTML = "";
-    document.getElementById("input").innerHTML = "";
+    if(!isRunning){
 
-    getData();
+        isRunning = true;
 
-    generateLanguage();
+        document.getElementById("language").innerHTML = "";
+        document.getElementById("input").innerHTML = "";
 
-    setSleepTime();
+        getData();
+
+        generateLanguage();
+
+        setSleepTime();
+
+        document.getElementById("language").innerHTML = languageToString();
+
+        document.getElementById("input").innerHTML = inputToString();
+
+        document.getElementById("DFA_View").scrollIntoView();
+
+        //PLAY SONG
+        for(var i = 0; i < songLanguage.length; i++){
+
+            playSound(songLanguage[i]);
+            setDFAImage(songLanguage[i]);
+            //setChordImage(songLanguage[i]);
+            await sleep(sleepTime);
+
+            if(queueCancel){
+                queueCancel = false;
+                break;
+            }
+        }
+
+        printDebug();
+        
+        setDFAImageAccept(songLanguage[(songLanguage.length)-1]);
+        inputLanguage = []; // Clear input language array on finish
+        songLanguage = []; // Clear song language array on finish
+        currentState = 0;
+        isRunning = false;
+    }
+    else {
+        console.log("A song is already in progress!");
+    }
+    return;
+}
+
+async function checkValid(x){
+
+    if(x == "0" || x == "1" || x == "2" || x == "3" || x == "4" || x == "5" || x == "6" || x == "7" || x == "8"){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
+
+async function userSong(){
+
+    isRunning = true;
+
+    var inputString = document.getElementById("User_Song_Textarea").value;
+
+    if(inputString.length < 1){
+
+        alert("You must enter values!");
+        return;
+
+    }
+
+    if(inputString.indexOf(" ") > 0){
+        alert("String cannot contain spaces");
+        return;
+    }
+
+    for(var i = 0; i < inputString.length; i++){
+
+        if(inputString[i] != ","){
+
+            if(checkValid(inputString[i])){
+
+                inputLanguage.push(inputString[i]);
+
+            }
+            else {
+
+                alert("Input string contains an invalid input character. \n Invalid Character: " + inputToString[i]);
+                return;
+
+            }
+
+        }
+
+    }
+
+    //Sets language array
+    for(var i = 0; i < inputLanguage.length; i++){
+
+        parseDFA(parseInt(inputLanguage[i]));
+
+    }
 
     document.getElementById("language").innerHTML = languageToString();
 
@@ -511,21 +623,74 @@ async function main(){
 
     document.getElementById("DFA_View").scrollIntoView();
 
-    //PLAY SONG
+    //Executes song
     for(var i = 0; i < songLanguage.length; i++){
 
         playSound(songLanguage[i]);
         setDFAImage(songLanguage[i]);
-        //setChordImage(songLanguage[i]);
         await sleep(sleepTime);
-        console.log(i);
+
+        if(queueCancel){
+            queueCancel = false;
+            break;
+        }
 
     }
 
     printDebug();
-    
-    setDFAImage("");
+        
+    setDFAImageAccept(songLanguage[(songLanguage.length)-1]);
     inputLanguage = []; // Clear input language array on finish
     songLanguage = []; // Clear song language array on finish
-    return;
+    currentState = 0;
+    isRunning = false;
+
+}
+
+async function playPreMade(x){
+
+    isRunning = true;
+
+
+    if(x == 0){
+
+        inputLanguage = [0,0,4,0,4,0,7,0,6,0,8,0,1,0,8,0]; // HOUSE OF THE RISING SUN
+        sleepTime = 800;
+
+    }
+    else if(x == 1){
+        inputLanguage = [5,0,0,0,0,0,4,0,0,2,0,0,3,0,0,0,0,0,0,0,0,0,0]; // TIMES THEY ARE A CHANGIN TODO ADD MORE
+        sleepTime = 400;
+    }
+    else if(x == 2){}
+    else if(x == 3){}
+
+
+    for(var i = 0; i < inputLanguage.length; i++){
+
+        parseDFA(inputLanguage[i]);
+
+    }
+
+    document.getElementById("language").innerHTML = languageToString();
+
+    document.getElementById("input").innerHTML = inputToString();
+
+    document.getElementById("DFA_View").scrollIntoView();
+
+    //Executes song
+    for(var i = 0; i < songLanguage.length; i++){
+
+        playSound(songLanguage[i]);
+        setDFAImage(songLanguage[i]);
+        await sleep(sleepTime);
+
+    }
+    
+    setDFAImageAccept(songLanguage[(songLanguage.length)-1]);
+    inputLanguage = [];
+    songLanguage = [];
+    isRunning = false;
+    await sleep(1000);
+    setDFAImage("");
 }

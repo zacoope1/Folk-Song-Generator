@@ -44,14 +44,35 @@
                     </select>
                 </div>
                 <button type="button" onclick="main();">Generate Song!</button>
+                <button type="button" onclick="queueCancel = true">Cancel Song</button>
             </form>
         </div>
 
+        <div id="User_Song_Input">
+            <h3>Try Your Own Input!</h3>
+            <form id="User_Song_Form">
+                <textarea id="User_Song_Textarea" placeholder="Enter a string to go through the DFA! (Comma separated values.)"></textarea>
+                <br>
+                <button type="button" onclick="userSong();">Play Song</button>
+                <button type="button" onclick="queueCancel = true">Cancel Song</button>
+            </form>
+        </div>
+
+        <div id="Pre-Made_Songs">
+            <h3>Famous Folk Songs</h3>
+            <ul>
+                <li><button type="button" onclick="playPreMade(0);">House Of The Rising Sun</button></li>
+                <li><button type="button" onclick="playPreMade(1);">Times They Are A-Changin</button></li>
+                <li><button type="button" onclick="playPreMade(2);">Song</button></li>
+                <li><button type="button" onclick="playPreMade(3);">Song</button></li>
+            </ul>
+        </div>
 
         <div id="Content_View">
             <div id="DFA_View">
                 <h3>DFA View</h3>
-                <img id="DFA_Image" src="/src/img/DFA_.png">
+                <p>(Click to zoom)</p>
+                <img id="DFA_Image" src="/src/img/DFA_.png" onclick="flipSize()" />
             </div>
     
             <div id="Input_Output_View">
@@ -62,9 +83,9 @@
             </div>
     
     
-            <!-- <div id="Chord_View">
-                <h3>Chord Tab</h3>
-                <img id="Chord_Image" src="">
+            <!-- <div id="Transition_Tab">
+                <h3>Transitions</h3>
+                <p>Listed below are all the transitions in a more readable format.</p>
             </div> -->
         </div>
 
