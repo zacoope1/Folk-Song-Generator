@@ -2,10 +2,13 @@
 <html>
 
     <head>
-    
+        
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="script.js"></script>
         <script src="section_manipulation.js"></script>
+        <title>Folk Song Generator</title>
+        <link rel="icon" href="src/BlackBeauty.png">
 
     </head>
 
@@ -14,7 +17,8 @@
         <noscript>You must have javascript enabled to use this site! :)</noscript>
         <div id="Header">
             <h1>Folk Song Generator</h1>
-            <h3>By: Zachary A. Cooper</h3>
+            <a href="https://zacharyacooper.com">Home</a>
+            <h2>By: Zachary A. Cooper</h3>
         </div>
 
         <div id="Generation_Type">
@@ -57,6 +61,13 @@
             <h2>Custom Song Input String</h2>
             <form id="User_Song_Form">
                 <textarea id="User_Song_Textarea" placeholder="Enter a string to go through the DFA! (Comma separated values.)"></textarea>
+                <br>
+                <label>Song Speed:</label>
+                <select id="songSpeedSelect">
+                    <option value="0">Slow (.5 Second Break)</option>
+                    <option value="1">Normal (.25 Second Break)</option>
+                    <option value="2">Fast (.10 Second break)</option>
+                </select>
                 <br>
                 <button type="button" onclick="userSong();">Play Song</button>
                 <button type="button" onclick="queueCancel = true">Cancel Song</button>
