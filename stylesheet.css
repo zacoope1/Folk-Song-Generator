@@ -30,6 +30,7 @@ a {
 
 a:hover {
   opacity: 0.85;
+  cursor: pointer;
 }
 
 button {
@@ -43,6 +44,7 @@ button:hover {
   margin: 10px;
   padding: 10px;
   opacity: 0.85;
+  cursor: pointer;
 }
 
 button:active {
@@ -128,6 +130,10 @@ select {
   min-width: 50%;
   min-height: 50%;
   padding-bottom: 20px;
+}
+
+#DFA_Image:hover {
+  cursor: zoom-in;
 }
 
 #Content_View {
