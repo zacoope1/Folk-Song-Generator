@@ -11,6 +11,35 @@ h3 {
   padding: 20px;
 }
 
+h1 {
+  padding-top: 5px;
+}
+h2 {
+  padding: 20px;
+}
+
+button {
+  font-weight: 700;
+  margin: 10px;
+  padding: 10px;
+  border: none;
+}
+
+button:hover {
+  margin: 10px;
+  padding: 10px;
+  opacity: 0.85;
+}
+
+button:active {
+  background-color: palegoldenrod;
+}
+
+select {
+  margin: 10px;
+  width: 200px;
+}
+
 #Header {
   display: flex;
   justify-content: space-evenly;
@@ -21,7 +50,25 @@ h3 {
   padding-top: 12px;
 }
 
+#Generation_Type {
+  text-align: center;
+  padding: 15px;
+}
+
+#Generation_Type button {
+  text-align: center;
+  padding: 10px;
+  margin-right: 40px;
+}
+
+#Generation_Type button:last-child {
+  text-align: center;
+  padding: 10px;
+  margin-right: 0px;
+}
+
 #Song_Setup {
+  transition: max-height 350ms ease-in-out;
   padding-top: 10px;
   padding-bottom: 10px;
   background: green;
@@ -29,6 +76,7 @@ h3 {
 }
 
 #User_Song_Input {
+  transition: max-height 350ms ease-in-out;
   background-color: blue;
   text-align: center;
   padding-top: 10px;
@@ -41,6 +89,7 @@ h3 {
 }
 
 #Pre-Made_Songs {
+  transition: max-height 350ms ease-in-out;
   background-color: palegoldenrod;
   text-align: center;
 }
@@ -72,7 +121,8 @@ h3 {
 }
 
 #Input_Output_View {
-  background: orange;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 #Input_Output_View p {
@@ -81,4 +131,16 @@ h3 {
 
 #Transition_Tab {
   background: yellow;
+}
+
+#language {
+  padding-bottom: 20px;
+}
+
+#language2 {
+  padding-bottom: 20px;
+}
+
+#language3 {
+  padding-bottom: 20px;
 }

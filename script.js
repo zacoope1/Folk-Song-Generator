@@ -1,7 +1,7 @@
 var debugMode = "OFF"; // <------- DEBUG MODE TOGGLE
 var isRunning = false; // <------- Allows 1 song to run at a time
 var queueCancel = false; // <----- Puts a queue to cancel a running song
-var flipSizeBool = false;
+var flipSizeBool = false; // <---- Variable for image size manipulation
 
 // Algorithm Variables
 var songSpeed = 0;
@@ -11,7 +11,6 @@ var H = 8;
 var inputLanguage = []; // Randomly generated INPUT language
 var songLanguage = []; // OUTPUT language.
 var sleepTime = 500; // In Miliseconds
-
 var currentState = 0; //STARTS AT S
 
 
@@ -51,7 +50,6 @@ function getData(){
 
     songSpeed = document.forms["songSetupForm"]["songSpeedSelect"].value;
     songLength = document.forms["songSetupForm"]["songLengthSelect"].value;
-    debugMode = document.forms["songSetupForm"]["debugModeSelect"].value
 
 }
 
@@ -229,16 +227,16 @@ function parseDFA(input){
                     currentState = 4;
                     break;
                 case 5:
-                    currentState = 9;
-                    break;
-                case 6:
                     currentState = 8;
                     break;
-                case 7:
+                case 6:
                     currentState = 7;
                     break;
-                case 8:
+                case 7:
                     currentState = 6;
+                    break;
+                case 8:
+                    currentState = 2;
                     break;
             }
             break;
@@ -514,11 +512,31 @@ async function playSound(chord){
 
 async function main(){
 
+    try {
+        document.getElementById("CustomizeButton").remove();
+    } catch (error) {
+        console.log(error);   
+    }
+
+    var customizeButton = document.createElement("button");
+    customizeButton.id = "CustomizeButton";
+    customizeButton.innerHTML = "Customize Song";
+    customizeButton.onclick = function(){raiseInputMenu();};
+    customizeButton.type = "button";
+    document.getElementById("songSetupForm").append(customizeButton);
+
     if(!isRunning){
 
         isRunning = true;
 
+        document.getElementById("Input_Output_View").style.display = "block";
+
+        document.getElementById("Input_Output_View2").style.display = "block";
+
         document.getElementById("language").innerHTML = "";
+
+        document.getElementById("language2").innerHTML = "";
+
         document.getElementById("input").innerHTML = "";
 
         getData();
@@ -529,7 +547,11 @@ async function main(){
 
         document.getElementById("language").innerHTML = languageToString();
 
+        document.getElementById("language2").innerHTML = languageToString();
+
         document.getElementById("input").innerHTML = inputToString();
+
+        document.getElementById("User_Song_Textarea").value = inputLanguage;
 
         document.getElementById("DFA_View").scrollIntoView();
 
@@ -574,6 +596,10 @@ async function checkValid(x){
 
 async function userSong(){
 
+    if(isRunning){
+        return;
+    }
+
     isRunning = true;
 
     var inputString = document.getElementById("User_Song_Textarea").value;
@@ -617,7 +643,13 @@ async function userSong(){
 
     }
 
+    document.getElementById("Input_Output_View").style.display = "block";
+
+    document.getElementById("Input_Output_View2").style.display = "block";
+
     document.getElementById("language").innerHTML = languageToString();
+
+    document.getElementById("language2").innerHTML = languageToString();
 
     document.getElementById("input").innerHTML = inputToString();
 
@@ -649,6 +681,10 @@ async function userSong(){
 
 async function playPreMade(x){
 
+    if(isRunning){
+        return;
+    }
+
     isRunning = true;
 
 
@@ -659,12 +695,19 @@ async function playPreMade(x){
 
     }
     else if(x == 1){
-        inputLanguage = [5,0,0,0,0,0,4,0,0,2,0,0,3,0,0,0,0,0,0,0,0,0,0]; // TIMES THEY ARE A CHANGIN TODO ADD MORE
-        sleepTime = 400;
+        inputLanguage = [5,0,0,0,0,0,4,0,0,2,0,0,3,0,0,0,0,0,0,0,0,0,0,0,7,0,0,4,0,0,4,0,0,0,0,0,0,5,0,0,4,0,0,2,0,0,3,0,0,0,0]; // TIMES THEY ARE A CHANGIN TODO ADD MORE
+        sleepTime = 350;
     }
-    else if(x == 2){}
-    else if(x == 3){}
+    else if(x == 2){
+        inputLanguage = [4,0,0,1,0,7,0,1,0,0,0,0,0,0,0,1,0,7,0,1,0,0,0,0,0]
+        sleepTime = 450;
+    }
 
+    else if(x == 3){
+        inputLanguage = [2,0,0,0,6,0,0,0,1,0,0,0,7,0,0,0];
+        sleepTime = 700;
+
+    }
 
     for(var i = 0; i < inputLanguage.length; i++){
 
@@ -672,7 +715,9 @@ async function playPreMade(x){
 
     }
 
-    document.getElementById("language").innerHTML = languageToString();
+    document.getElementById("Input_Output_View3").style.display = "block";
+
+    document.getElementById("language3").innerHTML = languageToString();
 
     document.getElementById("input").innerHTML = inputToString();
 

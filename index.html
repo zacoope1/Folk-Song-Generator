@@ -5,6 +5,7 @@
     
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
         <script src="script.js"></script>
+        <script src="section_manipulation.js"></script>
 
     </head>
 
@@ -16,9 +17,14 @@
             <h3>By: Zachary A. Cooper</h3>
         </div>
 
+        <div id="Generation_Type">
+            <button type="button" id="Random_Active" onclick="raiseRandomMenu();">Random Generator</button>
+            <button type="button" id="Input_Active" onclick="raiseInputMenu();">Test Your Own Input!</button>
+            <button type="button" id="Popular_Active" onclick="raisePopularMenu();">Popular Folk Songs</button>
+        </div>
 
         <div id="Song_Setup">
-            <h2 style="padding-bottom: 10px;">Song Setup</h2>
+            <h2 style="padding-bottom: 10px;">Generate Random Song</h2>
             <form id="songSetupForm">
                 <div id="Song_Speed">
                     <label>Song Speed:</label>
@@ -36,36 +42,43 @@
                         <option value="2">Long (50 Notes)</option>
                     </select>
                 </div>
-                <div id="Debug_Mode">
-                    <label>Debug Mode:</label>
-                    <select id="debugModeSelect">
-                        <option value="ON">ON</option>
-                        <option value="OFF">OFF</option>
-                    </select>
-                </div>
                 <button type="button" onclick="main();">Generate Song!</button>
                 <button type="button" onclick="queueCancel = true">Cancel Song</button>
             </form>
+            <div id="Input_Output_View" style="display:none;">
+                <h3>Input String</h3>
+                <p id="input"></p>
+                <h3>Song</h3>
+                <p id="language"></p>
+            </div>
         </div>
 
-        <div id="User_Song_Input">
-            <h3>Try Your Own Input!</h3>
+        <div id="User_Song_Input" style="display:none;">
+            <h2>Custom Song Input String</h2>
             <form id="User_Song_Form">
                 <textarea id="User_Song_Textarea" placeholder="Enter a string to go through the DFA! (Comma separated values.)"></textarea>
                 <br>
                 <button type="button" onclick="userSong();">Play Song</button>
                 <button type="button" onclick="queueCancel = true">Cancel Song</button>
             </form>
+            <div id="Input_Output_View2" style="display:none;">
+                <h3>Song</h3>
+                <p id="language2"></p>
+            </div>
         </div>
 
-        <div id="Pre-Made_Songs">
+        <div id="Pre-Made_Songs" style="display:none;">
             <h3>Famous Folk Songs</h3>
             <ul>
-                <li><button type="button" onclick="playPreMade(0);">House Of The Rising Sun</button></li>
-                <li><button type="button" onclick="playPreMade(1);">Times They Are A-Changin</button></li>
-                <li><button type="button" onclick="playPreMade(2);">Song</button></li>
-                <li><button type="button" onclick="playPreMade(3);">Song</button></li>
+                <li><button type="button" onclick="playPreMade(0);">House Of The Rising Sun - The Animals</button></li>
+                <li><button type="button" onclick="playPreMade(1);">Times They Are A-Changin - Bob Dylan</button></li>
+                <li><button type="button" onclick="playPreMade(2);">Bad Moon Rising - CCR</button></li>
+                <li><button type="button" onclick="playPreMade(3);">Flume - Bon Iver</button></li>
             </ul>
+            <div id="Input_Output_View3" style="display:none;">
+                <h3>Song</h3>
+                <p id="language3"></p>
+            </div>
         </div>
 
         <div id="Content_View">
@@ -74,15 +87,7 @@
                 <p>(Click to zoom)</p>
                 <img id="DFA_Image" src="/src/img/DFA_.png" onclick="flipSize()" />
             </div>
-    
-            <div id="Input_Output_View">
-                <h3>Input String</h3>
-                <p id="input"></p>
-                <h3>Song</h3>
-                <p id="language"></p>
-            </div>
-    
-    
+
             <!-- <div id="Transition_Tab">
                 <h3>Transitions</h3>
                 <p>Listed below are all the transitions in a more readable format.</p>
