@@ -1,5 +1,5 @@
-var buttonColorActive   = ""; //SET SECONDARY BUTTON BACKGROUND COLOR
-var buttonColorInActive = ""; //SET PRIMARY BUTTON BACKGROUND COLOR
+var buttonColorActive   = "#37A988"; //SET SECONDARY BUTTON BACKGROUND COLOR
+var buttonColorInActive = "#679AA5"; //SET PRIMARY BUTTON BACKGROUND COLOR
 
 function setActiveButton(x){
 

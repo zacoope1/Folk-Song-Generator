@@ -607,15 +607,18 @@ async function userSong(){
     if(inputString.length < 1){
 
         alert("You must enter values!");
+        isRunning = false;
         return;
 
     }
 
     if(inputString.indexOf(" ") > 0){
         alert("String cannot contain spaces");
+        isRunning = false;
         return;
     }
 
+    //Check validity of input
     for(var i = 0; i < inputString.length; i++){
 
         if(inputString[i] != ","){
@@ -654,6 +657,10 @@ async function userSong(){
     document.getElementById("input").innerHTML = inputToString();
 
     document.getElementById("DFA_View").scrollIntoView();
+
+    songSpeed = document.getElementById("songSpeedSelect2").value;
+
+    setSleepTime();
 
     //Executes song
     for(var i = 0; i < songLanguage.length; i++){

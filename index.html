@@ -17,7 +17,7 @@
         <noscript>You must have javascript enabled to use this site! :)</noscript>
         <div id="Header">
             <h1>Folk Song Generator</h1>
-            <a href="https://zacharyacooper.com">Home</a>
+            <a href="https://zacharyacooper.com">Website Home</a>
             <h2>By: Zachary A. Cooper</h3>
         </div>
 
@@ -33,9 +33,9 @@
                 <div id="Song_Speed">
                     <label>Song Speed:</label>
                     <select id="songSpeedSelect">
-                        <option value="0">Slow (.5 Second Break)</option>
-                        <option value="1">Normal (.25 Second Break)</option>
-                        <option value="2">Fast (.10 Second break)</option>
+                        <option value="0">Slow (1.5 Seconds Pause)</option>
+                        <option value="1">Normal (1 Second Pause)</option>
+                        <option value="2">Fast (.5 Second Pause)</option>
                     </select>
                 </div>
                 <div id="Song_Length">
@@ -58,15 +58,15 @@
         </div>
 
         <div id="User_Song_Input" style="display:none;">
-            <h2>Custom Song Input String</h2>
+            <h2>Custom Input String</h2>
             <form id="User_Song_Form">
-                <textarea id="User_Song_Textarea" placeholder="Enter a string to go through the DFA! (Comma separated values.)"></textarea>
+                <textarea id="User_Song_Textarea" placeholder="Enter a string to go through the DFA! (Comma separated values between 0-8)"></textarea>
                 <br>
                 <label>Song Speed:</label>
-                <select id="songSpeedSelect">
-                    <option value="0">Slow (.5 Second Break)</option>
-                    <option value="1">Normal (.25 Second Break)</option>
-                    <option value="2">Fast (.10 Second break)</option>
+                <select id="songSpeedSelect2">
+                    <option value="0">Slow (1.5 Seconds Pause)</option>
+                    <option value="1">Normal (1 Second Pause)</option>
+                    <option value="2">Fast (.5 Second Pause)</option>
                 </select>
                 <br>
                 <button type="button" onclick="userSong();">Play Song</button>
@@ -79,12 +79,12 @@
         </div>
 
         <div id="Pre-Made_Songs" style="display:none;">
-            <h3>Famous Folk Songs</h3>
+            <h2>Famous Folk Songs</h2>
             <ul>
-                <li><button type="button" onclick="playPreMade(0);">House Of The Rising Sun - The Animals</button></li>
-                <li><button type="button" onclick="playPreMade(1);">Times They Are A-Changin - Bob Dylan</button></li>
-                <li><button type="button" onclick="playPreMade(2);">Bad Moon Rising - CCR</button></li>
                 <li><button type="button" onclick="playPreMade(3);">Flume - Bon Iver</button></li>
+                <li><button type="button" onclick="playPreMade(0);">House Of The Rising Sun - The Animals</button></li>
+                <li><button type="button" onclick="playPreMade(2);">Bad Moon Rising - CCR</button></li>
+                <li><button type="button" onclick="playPreMade(1);">Times They Are A-Changin - Bob Dylan</button></li>
             </ul>
             <div id="Input_Output_View3" style="display:none;">
                 <h3>Song</h3>
@@ -94,14 +94,9 @@
 
         <div id="Content_View">
             <div id="DFA_View">
-                <h2>DFA View</h2>
+                <h2>Deterministic Finite Automaton</h2>
                 <img id="DFA_Image" src="/src/img/DFA_.png" onclick="flipSize()" />
             </div>
-
-            <!-- <div id="Transition_Tab">
-                <h3>Transitions</h3>
-                <p>Listed below are all the transitions in a more readable format.</p>
-            </div> -->
         </div>
 
     </body>

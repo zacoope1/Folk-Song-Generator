@@ -7,17 +7,10 @@ body {
   font-family: sans-serif;
 }
 
+h1,
+h2,
 h3 {
   padding: 20px;
-}
-
-h1 {
-  padding: 20px;
-}
-
-h2 {
-  padding: 20px;
-  padding-top: 25px;
 }
 
 a {
@@ -38,6 +31,9 @@ button {
   margin: 10px;
   padding: 10px;
   border: none;
+  background-color: #679aa5;
+  color: white;
+  border: 2px solid black;
 }
 
 button:hover {
@@ -45,10 +41,6 @@ button:hover {
   padding: 10px;
   opacity: 0.85;
   cursor: pointer;
-}
-
-button:active {
-  background-color: palegoldenrod;
 }
 
 select {
@@ -59,7 +51,7 @@ select {
 #Header {
   display: flex;
   justify-content: space-evenly;
-  background-color: lightgoldenrodyellow;
+  background-color: #f3e9d2;
 }
 
 #Header h3 {
@@ -67,6 +59,7 @@ select {
 }
 
 #Generation_Type {
+  background-color: #f3e9d2;
   text-align: center;
   padding: 15px;
 }
@@ -84,29 +77,29 @@ select {
 }
 
 #Song_Setup {
-  transition: max-height 350ms ease-in-out;
   padding-top: 10px;
   padding-bottom: 10px;
-  background: green;
+  background-color: #c6dabf;
   text-align: center;
 }
 
 #User_Song_Input {
-  transition: max-height 350ms ease-in-out;
-  background-color: blue;
+  background-color: #c6dabf;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 #User_Song_Input textarea {
-  width: 500px;
+  width: 550px;
   height: 75px;
+  resize: none;
 }
 
 #Pre-Made_Songs {
-  transition: max-height 350ms ease-in-out;
-  background-color: palegoldenrod;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #c6dabf;
   text-align: center;
 }
 
@@ -117,11 +110,12 @@ select {
 }
 
 #Pre-Made_Songs li {
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #DFA_View {
-  background-color: tomato;
+  background-color: #88d498;
 }
 
 #DFA_Image {
