@@ -23,6 +23,8 @@ a {
 
 a:hover {
   opacity: 0.85;
+  text-decoration: underline;
+  color: #1e90ff;
   cursor: pointer;
 }
 
